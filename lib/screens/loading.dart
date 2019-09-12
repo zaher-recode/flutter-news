@@ -28,11 +28,11 @@ class _LoadingScreenState extends State<LoadingScreen> {
         '$kUrlTop$kCountryEquals${countryData['countryCode'].toLowerCase()}$kApiKey';
     Networker newsNetworker = Networker(url);
     var newsData = await newsNetworker.getData();
-    Map<String, dynamic> loaded = {
+    // NamedRoute with args
+    Navigator.of(context).pushNamed('/index', arguments: {
       'country': countryData['countryCode'].toLowerCase(),
       'localNews': newsData,
-    };
-    Navigator.push(context, MaterialPageRoute(builder: (context) => Index(loaded)));
+    });
   }
 
   @override

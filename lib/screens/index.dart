@@ -14,11 +14,15 @@ import 'package:realbox/screens/sections/local.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Index extends StatelessWidget {
-  final data;
-  Index(this.data);
+  // changing to NamedRoutes
+  // final data;
+  // Index(this.data);
 
   @override
   Widget build(BuildContext context) {
+    final Map<String, dynamic> data = ModalRoute.of(context).settings.arguments;
+        // print(routeArgs);
+    // final data = routeArgs['data'];
     return DefaultTabController(
       length: 7,
       child: Scaffold(
