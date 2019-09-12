@@ -13,8 +13,6 @@ const kSourceEquals = 'source=';
 const kQueryEquals = 'q=';
 const kUrlTop = 'https://newsapi.org/v2/top-headlines?';
 const kUrlAll = 'https://newsapi.org/v2/everything?';
-// API Country
-// const geoUrl = 'http://api.geonames.org/countryCodeJSON?lat=$lot&lng=$lon&username=moh1990';
 // styles
 const kTextSplash = TextStyle(
   color: kColorDarkGrey,
