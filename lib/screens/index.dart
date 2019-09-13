@@ -1,14 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:realbox/utilities/constants.dart';
 import 'package:realbox/src/location.dart';
-import 'package:realbox/src/networker.dart';
-import 'package:realbox/screens/sections/business.dart';
-import 'package:realbox/screens/sections/entertainment.dart';
-import 'package:realbox/screens/sections/general.dart';
-import 'package:realbox/screens/sections/science.dart';
-import 'package:realbox/screens/sections/sports.dart';
-import 'package:realbox/screens/sections/tech.dart';
-import 'package:realbox/screens/sections/local.dart';
+import 'package:realbox/screens/news_feeder.dart';
 
 
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -20,7 +13,7 @@ class Index extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Map<String, dynamic> data = ModalRoute.of(context).settings.arguments;
+    // final Map<String, dynamic> data = ModalRoute.of(context).settings.arguments;
         // print(routeArgs);
     // final data = routeArgs['data'];
     return DefaultTabController(
@@ -30,7 +23,7 @@ class Index extends StatelessWidget {
           backgroundColor: Colors.white,
           title: Text(
             "Recode News",
-            style: kTextTab,
+            style: kTextTitle,
           ),
           leading: Image.asset('images/logo.png'),
           actions: <Widget>[
@@ -45,10 +38,9 @@ class Index extends StatelessWidget {
             labelColor: kColorGrey, // for text icons in tabs
             isScrollable:
                 true, // make it scrollable and not crambed in one page.
-
             tabs: [
               Tab(icon: Icon(FontAwesomeIcons.home), text: 'Local'),
-              Tab(icon: Icon(FontAwesomeIcons.newspaper), text: 'General'),
+              Tab(icon: Icon(FontAwesomeIcons.heartbeat), text: 'Health'),
               Tab(icon: Icon(FontAwesomeIcons.laptop), text: 'Technology'),
               Tab(icon: Icon(FontAwesomeIcons.chartBar), text: 'Business'),
               Tab(icon: Icon(FontAwesomeIcons.futbol), text: 'Sports'),
@@ -60,13 +52,13 @@ class Index extends StatelessWidget {
         body: SafeArea(
           child: TabBarView(
             children: [
-              Local(),
-              General(),
-              Tech(),
-              Business(),
-              Sports(),
-              Entertainment(),
-              Science(),
+              NewsFeeder(text: 'Local News in ${Location.countryName}', url: '$kUrlTop$kCountryEquals${Location.country}$kApiKey'),
+              NewsFeeder(text: 'Health News', url:'$kUrlTop$kCountryEquals${Location.country}&category=health$kApiKey'),
+              NewsFeeder(text: 'Technlogy News', url:'$kUrlTop$kCountryEquals${Location.country}&category=technology$kApiKey'),
+              NewsFeeder(text: 'Business News',url: '$kUrlTop$kCountryEquals${Location.country}&category=business$kApiKey'),
+              NewsFeeder(text: 'Spotrs News',url:'$kUrlTop$kCountryEquals${Location.country}&category=sports$kApiKey'),
+              NewsFeeder(text: 'Entertainment News',url:'$kUrlTop$kCountryEquals${Location.country}&category=entertainment$kApiKey'),
+              NewsFeeder(text: 'Science News',url:'$kUrlTop$kCountryEquals${Location.country}&category=science$kApiKey'),
             ],
           ),
         ),

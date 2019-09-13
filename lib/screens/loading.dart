@@ -3,8 +3,6 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:realbox/utilities/constants.dart';
 import 'package:realbox/src/location.dart';
 import 'package:realbox/src/networker.dart';
-import 'package:realbox/screens/index.dart';
-
 
 class LoadingScreen extends StatefulWidget {
   @override
@@ -19,20 +17,21 @@ class _LoadingScreenState extends State<LoadingScreen> {
   }
 
   void getLocationData() async {
+    // get country from gps location
     Location location = Location();
-    await location.getCurrentLocation();
-    Networker locationNetworker = Networker(
-        'http://api.geonames.org/countryCodeJSON?lat=${location.latitude}&lng=${location.longitude}&username=moh1990');
-    var countryData = await locationNetworker.getData();
-    String url =
-        '$kUrlTop$kCountryEquals${countryData['countryCode'].toLowerCase()}$kApiKey';
-    Networker newsNetworker = Networker(url);
-    var newsData = await newsNetworker.getData();
+    String country = await location.getContry();
+    
+    // String url = '$kUrlTop$kCountryEquals$country$kApiKey';
+    // Networker newsNetworker = Networker(url);
+    // var newsData = await newsNetworker.getData();
     // NamedRoute with args
-    Navigator.of(context).pushNamed('/index', arguments: {
-      'country': countryData['countryCode'].toLowerCase(),
-      'localNews': newsData,
-    });
+    Navigator.of(context).pushReplacementNamed(
+      '/index',
+      // arguments: {
+      //   // 'country': country,
+      //   'localNews': newsData,
+      // },
+    );
   }
 
   @override

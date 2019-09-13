@@ -2,22 +2,29 @@ import 'package:flutter/material.dart';
 import 'package:realbox/src/article_model.dart';
 
 import 'package:realbox/utilities/constants.dart';
-import 'package:realbox/src/location.dart';
 import 'package:realbox/src/article_list.dart';
 import 'package:realbox/src/networker.dart';
 
-class Business extends StatefulWidget {
+class NewsFeeder extends StatefulWidget {
+  final url;
+  final text;
+  NewsFeeder({@required this.url, @required this.text});
+  
   @override
-  _BusinessState createState() => _BusinessState();
+  _NewsFeederState createState() => _NewsFeederState();
 }
 
-class _BusinessState extends State<Business> {
+class _NewsFeederState extends State<NewsFeeder> {
+
+  String titleText;
+  String newsUrl;
   var _newsData;
   List<ArticleModel> articles = [];
-
   @override
   void initState() {
     super.initState();
+    titleText = widget.text;
+    newsUrl = widget.url;
     if(_newsData == null){
       _getNews();
     }
@@ -28,22 +35,22 @@ class _BusinessState extends State<Business> {
       super.setState(fn);
     }
   }
-void _refresh(data) {
+  void _refresh(data) {
     setState(() {
       _newsData = data;
     });
   }
 
   Future<void> _getNews() async {
-    String url = '$kUrlTop$kCountryEquals${Location.country}&category=business$kApiKey';
-    Networker localNewsNetworker = Networker(url);
-    _newsData = await localNewsNetworker.getData();
+    //String url = '$kUrlTop$kCountryEquals${Location.country}&category=technology$kApiKey';
+    Networker newsNetworker = Networker(newsUrl);
+    _newsData = await newsNetworker.getData();
     _refresh(_newsData);
+    print(_newsData['totalResults']);
     for (int i = 0; i < (_newsData['articles']).length; i++) {
       articles.add(ArticleModel.fromJson(_newsData['articles'][i]));
     }
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -52,8 +59,8 @@ void _refresh(data) {
         Padding(
           padding: const EdgeInsets.fromLTRB(0.0, 12.0, 0, 8.0),
           child: Text(
-          'Business News',
-         style: kTextTitle,
+            titleText,
+            style: kTextTitle,
           ),
         ),
         Expanded(
