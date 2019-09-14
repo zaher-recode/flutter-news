@@ -18,6 +18,7 @@ class _NewsFeederState extends State<NewsFeeder> {
 
   String titleText;
   String newsUrl;
+  bool _noResults = false;
   var _newsData;
   List<ArticleModel> articles = [];
   @override
@@ -47,13 +48,25 @@ class _NewsFeederState extends State<NewsFeeder> {
     _newsData = await newsNetworker.getData();
     _refresh(_newsData);
     print(_newsData['totalResults']);
-    for (int i = 0; i < (_newsData['articles']).length; i++) {
+    if(_newsData['totalResults'] == 0){
+      print('111111111111 it should work');
+     _noResults = true;
+      // return Center(child: Text('SORRY! No Results Were Found.',style: kTextTitle,),);
+      
+    }else{
+      for (int i = 0; i < (_newsData['articles']).length; i++) {
       articles.add(ArticleModel.fromJson(_newsData['articles'][i]));
     }
+    }
+    
   }
 
   @override
   Widget build(BuildContext context) {
+    if(_noResults){
+      return Center(child: Text('SORRY! No Results Were Found.',style: kTextTitle,),);
+
+    }
     return Column(
       children: <Widget>[
         Padding(

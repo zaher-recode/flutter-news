@@ -9,48 +9,39 @@ class Results extends StatelessWidget {
         ModalRoute.of(context).settings.arguments;
     final searchTerm = routeArgs['input'].toUpperCase();
     return Scaffold(
-      body: Container(
-        // decoration: BoxDecoration(
-        //   image: DecorationImage(
-        //     image: AssetImage('images/bg.png'),
-        //     fit: BoxFit.cover,
-        //   ),
-        // ),
-        constraints: BoxConstraints.expand(),
-        child: SafeArea(
-          child: Column(
-            children: <Widget>[
-              Align(
-                alignment: Alignment.topLeft,
-                child: Row(
-                  children: <Widget>[
-                    FlatButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: Icon(
-                        Icons.arrow_back_ios,
-                        size: 50.0,
-                        color: kColorDarkGrey,
-                      ),
+      body: SafeArea(
+        child: Column(
+          children: <Widget>[
+            Align(
+              alignment: Alignment.topLeft,
+              child: Row(
+                children: <Widget>[
+                  FlatButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Icon(
+                      Icons.arrow_back,
+                      size: 30.0,
+                      color: kColorDarkGrey,
                     ),
-                    Text(
-                      'Results for $searchTerm',
-                      style: kTextResults,
-                    ),
-                  ],
-                ),
+                  ),
+                  Text(
+                    'Results',
+                    style: kTextResults,
+                  ),
+                ],
               ),
+            ),
 //              SizedBox(height: 50.0,),
 
-              Expanded(
-                child: NewsFeeder(
-                  text: '$searchTerm News',
-                  url: '$kUrlAll$kQueryEquals%27$searchTerm%27&language=en&sortBy=publishedAt$kApiKey',
-                ),
+            Expanded(
+              child: NewsFeeder(
+                text: '$searchTerm News',
+                url: '$kUrlAll$kQueryEquals%27$searchTerm%27&language=en&sortBy=publishedAt$kApiKey',
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

@@ -19,7 +19,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
   void getLocationData() async {
     // get country from gps location
     Location location = Location();
-    String country = await location.getContry();
+    await location.getContry();
     
     // String url = '$kUrlTop$kCountryEquals$country$kApiKey';
     // Networker newsNetworker = Networker(url);

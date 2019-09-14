@@ -2,8 +2,8 @@ import 'package:geolocator/geolocator.dart';
 import 'package:realbox/src/networker.dart';
 
 class Location {
-  double latitude;
-  double longitude;
+  double latitude = 40.7128;
+  double longitude = -74.0060;
   static String country, countryName;
   Future<void> _getCurrentLocation() async {
     Position position;
@@ -12,9 +12,15 @@ class Location {
     } catch (e) {
       print(e);
     }
-    // defaulting to kl in case no GPS was given;
-    latitude = position.latitude ?? 3.1390 ;
-    longitude = position.longitude ?? 101.6869;
+    // defaulting to US NY in case no GPS was given;
+    try{
+      latitude = position.latitude ;
+      longitude = position.longitude ;
+    }catch(e){
+      
+      print(e);
+    }
+    
   }
   Future<String> getContry() async {
     await _getCurrentLocation();

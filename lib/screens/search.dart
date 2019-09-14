@@ -31,8 +31,8 @@ class _SearchState extends State<Search> {
                     Navigator.pop(context);
                   },
                   child: Icon(
-                    Icons.arrow_back_ios,
-                    size: 50.0,
+                    Icons.arrow_back,
+                    size: 30.0,
                     color: kColorGrey,
                   ),
                 ),

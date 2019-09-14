@@ -21,12 +21,9 @@ class Index extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,
-          title: GestureDetector(
-            onTap: ()=> Navigator.pushReplacementNamed(context, '/index'),
-            child: Text(
-              "Recode News",
-              style: kTextTitle,
-            ),
+          title: Text(
+            "Recode News",
+            style: kTextTitle,
           ),
           leading: Image.asset('images/logo.png'),
           actions: <Widget>[
