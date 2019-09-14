@@ -43,13 +43,23 @@ class _SearchState extends State<Search> {
                   onChanged: (value) {
                     input = value;
                   },
-                  style: TextStyle(
-                    color: Colors.blueAccent,
-                  ),
+                  autofocus: true,
+                  autocorrect: true,
+                  style: kTextSubTitle,
                   decoration: kSearchDecoration,
+                  onSubmitted: (String str){
+                    if (str != '') {
+                    Navigator.of(context).pushReplacementNamed(
+                      '/results',
+                      arguments: {
+                        'input': str,
+                      },
+                    );
+                    }
+                  },
                 ),
               ),
-              FlatButton(
+              RaisedButton(
                 onPressed: () {
                   if (input != null) {
                     Navigator.of(context).pushReplacementNamed(

@@ -49,9 +49,9 @@ const kTextBody = TextStyle(
   fontSize: 16.0,
 );
 const kTextSearch = TextStyle(
-  color: kColorLightGrey,
+  color: kColorDarkGrey,
   fontFamily: 'Roboto',
-  fontWeight: FontWeight.w700,
+  fontWeight: FontWeight.w500,
   fontSize: 25.0,
 );
 const kTextResults = TextStyle(
