@@ -46,7 +46,7 @@ class Results extends StatelessWidget {
               Expanded(
                 child: NewsFeeder(
                   text: '$searchTerm News',
-                  url: '$kUrlAll$kQueryEquals$searchTerm$kApiKey',
+                  url: '$kUrlAll$kQueryEquals%27$searchTerm%27&language=en&sortBy=publishedAt$kApiKey',
                 ),
               ),
             ],

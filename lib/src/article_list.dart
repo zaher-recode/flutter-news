@@ -7,6 +7,7 @@ import 'package:timeago/timeago.dart' as timeago;
 class AtricleList extends StatelessWidget {
   final List<ArticleModel> articles;
   AtricleList(this.articles);
+  
   Widget build(context){
     return ListView.builder(
       itemCount: articles.length,
@@ -32,9 +33,46 @@ class AtricleList extends StatelessWidget {
               
                         ),
             child: Column(
-              
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                Image.network('${articles[index].urlToImage}'),
+                Stack(
+                  alignment: AlignmentDirectional.topStart,
+                  fit: StackFit.passthrough ,
+                  children: <Widget>[
+                    Stack(
+                      alignment: AlignmentDirectional.bottomStart,
+                      fit: StackFit.passthrough ,
+                      children: <Widget>[
+                        Image.network('${articles[index].urlToImage}', height: 170.0, fit: BoxFit.cover,),
+                        Align(alignment: Alignment.bottomLeft,
+                        child: Padding(
+                          padding: const EdgeInsets.only(left:8.0, bottom: 3.0),
+                          child: Text(timeago.format(articles[index].publishedAt),
+                          style: TextStyle(
+                            backgroundColor: kColorYellow,
+                            fontFamily: 'Roboto',
+                            fontSize: 16.0,
+                          ),
+                          ),
+                        ),
+                        ),
+                      ],
+                    ),
+                    Align(alignment: Alignment.topRight,
+                        child: Padding(
+                          padding: const EdgeInsets.all(2.0),
+                          child: Text(articles[index].source,
+                          style: TextStyle(
+                            backgroundColor: kColorLightGrey,
+                            fontFamily: 'Roboto',
+                            fontSize: 20.0,
+                          ),
+                          ),
+                        ),
+                        ),
+                  ],
+                ),
+                
                 Padding(
                   padding: const EdgeInsets.fromLTRB(10.0,8.0,14.0,10.0),
                   child: Text('${articles[index].title}',

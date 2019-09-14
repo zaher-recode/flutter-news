@@ -39,24 +39,27 @@ class _SearchState extends State<Search> {
               ),
               Container(
                 padding: EdgeInsets.all(20.0),
-                child: TextField(
-                  onChanged: (value) {
-                    input = value;
-                  },
-                  autofocus: true,
-                  autocorrect: true,
-                  style: kTextSubTitle,
-                  decoration: kSearchDecoration,
-                  onSubmitted: (String str){
-                    if (str != '') {
-                    Navigator.of(context).pushReplacementNamed(
-                      '/results',
-                      arguments: {
-                        'input': str,
-                      },
-                    );
-                    }
-                  },
+                child: Theme(
+                  data: Theme.of(context).copyWith(splashColor: Colors.purple),
+                  child: TextField(
+                    onChanged: (value) {
+                      input = value;
+                    },
+                    autofocus: true,
+                    autocorrect: true,
+                    style: kTextSubTitle,
+                    decoration: kSearchDecoration,
+                    onSubmitted: (String str){
+                      if (str != '') {
+                      Navigator.of(context).pushReplacementNamed(
+                        '/results',
+                        arguments: {
+                          'input': str,
+                        },
+                      );
+                      }
+                    },
+                  ),
                 ),
               ),
               RaisedButton(
