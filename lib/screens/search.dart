@@ -3,12 +3,12 @@ import 'package:realbox/utilities/constants.dart';
 
 // NOT DONE YET
 
-class SearchScreen extends StatefulWidget {
+class Search extends StatefulWidget {
   @override
-  _SearchScreenState createState() => _SearchScreenState();
+  _SearchState createState() => _SearchState();
 }
 
-class _SearchScreenState extends State<SearchScreen> {
+class _SearchState extends State<Search> {
   @override
   Widget build(BuildContext context) {
     String input;
@@ -16,7 +16,7 @@ class _SearchScreenState extends State<SearchScreen> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('images/location_background.png'),
+            image: AssetImage('images/bg.png'),
             fit: BoxFit.cover,
           ),
         ),
@@ -33,13 +33,16 @@ class _SearchScreenState extends State<SearchScreen> {
                   child: Icon(
                     Icons.arrow_back_ios,
                     size: 50.0,
+                    color: kColorGrey,
                   ),
                 ),
               ),
               Container(
                 padding: EdgeInsets.all(20.0),
                 child: TextField(
-                  onChanged: (value){ input = value;},
+                  onChanged: (value) {
+                    input = value;
+                  },
                   style: TextStyle(
                     color: Colors.blueAccent,
                   ),
@@ -47,11 +50,19 @@ class _SearchScreenState extends State<SearchScreen> {
                 ),
               ),
               FlatButton(
-                onPressed: () { 
-                  Navigator.pop(context, input);},
+                onPressed: () {
+                  if (input != null) {
+                    Navigator.of(context).pushReplacementNamed(
+                      '/results',
+                      arguments: {
+                        'input': input,
+                      },
+                    );
+                  }
+                },
                 child: Text(
                   'Search News',
-                  style: kTextSubTitle,
+                  style: kTextSearch,
                 ),
               ),
             ],

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:realbox/screens/loading.dart';
 import 'package:realbox/screens/index.dart';
+import 'package:realbox/screens/show.dart';
+import 'package:realbox/screens/search.dart';
+import 'package:realbox/screens/results.dart';
 // import 'package:realbox/screens/sections/tech.dart';
 // import 'package:realbox/screens/sections/business.dart';
 // import 'package:realbox/screens/sections/entertainment.dart';
@@ -19,6 +22,9 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => LoadingScreen(),
         '/index': (context) => Index(), // working with args
+        '/show': (context) => Show(),
+        '/search': (context) => Search(),
+        '/results': (context) => Results(),
         // '/sections/tech': (context) => Tech(),
         // '/sections/business': (context) => Business(),
         // '/sections/entertainment': (context) => Entertainment(),

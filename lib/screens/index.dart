@@ -21,15 +21,21 @@ class Index extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,
-          title: Text(
-            "Recode News",
-            style: kTextTitle,
+          title: GestureDetector(
+            onTap: ()=> Navigator.pushReplacementNamed(context, '/index'),
+            child: Text(
+              "Recode News",
+              style: kTextTitle,
+            ),
           ),
           leading: Image.asset('images/logo.png'),
           actions: <Widget>[
-            Icon(
-              FontAwesomeIcons.search,
-              color: kColorGrey,
+            FlatButton(
+              onPressed: (){Navigator.pushNamed(context, '/search');},
+              child: Icon(
+                FontAwesomeIcons.search,
+                color: kColorGrey,
+              ),
             ),
           ],
           bottom: TabBar(
@@ -56,7 +62,7 @@ class Index extends StatelessWidget {
               NewsFeeder(text: 'Health News', url:'$kUrlTop$kCountryEquals${Location.country}&category=health$kApiKey'),
               NewsFeeder(text: 'Technlogy News', url:'$kUrlTop$kCountryEquals${Location.country}&category=technology$kApiKey'),
               NewsFeeder(text: 'Business News',url: '$kUrlTop$kCountryEquals${Location.country}&category=business$kApiKey'),
-              NewsFeeder(text: 'Spotrs News',url:'$kUrlTop$kCountryEquals${Location.country}&category=sports$kApiKey'),
+              NewsFeeder(text: 'Sports News',url:'$kUrlTop$kCountryEquals${Location.country}&category=sports$kApiKey'),
               NewsFeeder(text: 'Entertainment News',url:'$kUrlTop$kCountryEquals${Location.country}&category=entertainment$kApiKey'),
               NewsFeeder(text: 'Science News',url:'$kUrlTop$kCountryEquals${Location.country}&category=science$kApiKey'),
             ],

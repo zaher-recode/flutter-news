@@ -48,7 +48,18 @@ const kTextBody = TextStyle(
   fontWeight: FontWeight.w400,
   fontSize: 16.0,
 );
-
+const kTextSearch = TextStyle(
+  color: kColorLightGrey,
+  fontFamily: 'Roboto',
+  fontWeight: FontWeight.w700,
+  fontSize: 25.0,
+);
+const kTextResults = TextStyle(
+  color: kColorDarkGrey,
+  fontFamily: 'Roboto',
+  fontWeight: FontWeight.w700,
+  fontSize: 25.0,
+);
 const kSearchDecoration = InputDecoration(
   border: OutlineInputBorder(
     borderSide: BorderSide.none,
@@ -63,7 +74,8 @@ const kSearchDecoration = InputDecoration(
     color: Colors.grey,
   ),
   icon: Icon(
-    Icons.public,
+    Icons.search,
     color: Colors.white,
+    size: 30.0,
   ),
 );

@@ -14,7 +14,7 @@ class ArticleModel {
   ArticleModel.fromJson(Map<String, dynamic> parsed){
     title = parsed['title']?? 'No Title';
     description = parsed['description']?? 'No Description';
-    urlToImage = parsed['urlToImage'] ?? "https://i.ibb.co/Rzn3kVG/logo.png"; 
+    urlToImage = parsed['urlToImage'] ?? 'https://i.ibb.co/Rzn3kVG/logo.png'; 
     content = parsed['content']?? 'No Content';
     author = parsed['author']?? 'Unknown Author';
     source = parsed['source']['name'] ?? 'Unknown Source';
