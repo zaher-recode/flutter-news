@@ -49,7 +49,15 @@ class Show extends StatelessWidget {
                           if(article.sourceId == null){
                             return;
                           }else{
-                            Navigator.pushNamed(context, '/source',arguments: article.sourceId);
+                            Navigator.of(context).pushReplacementNamed(
+                              '/results',
+                              arguments: {
+                                'arg': article.source,
+                                'text': article.source,
+                                'url':
+                                    '${kUrlTop}sources=${article.sourceId}$kApiKey',
+                              },
+                            );
                           }
                           
                           },

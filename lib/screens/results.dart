@@ -4,10 +4,13 @@ import 'package:realbox/screens/news_feeder.dart';
 
 class Results extends StatelessWidget {
   @override
-  Widget build(BuildContext context) {
+    Widget build(BuildContext context) {
     final Map<String, dynamic> routeArgs =
         ModalRoute.of(context).settings.arguments;
-    final searchTerm = routeArgs['input'].toUpperCase();
+    final String arg = routeArgs['arg'];
+    final String url = routeArgs['url']; 
+    final String text = routeArgs['text']; 
+
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -27,7 +30,7 @@ class Results extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'Results',
+                    text,
                     style: kTextResults,
                   ),
                 ],
@@ -36,8 +39,8 @@ class Results extends StatelessWidget {
 
             Expanded(
               child: NewsFeeder(
-                text: '$searchTerm News',
-                url: '$kUrlAll$kQueryEquals%27$searchTerm%27&language=en&sortBy=publishedAt$kApiKey',
+                text: '$arg News',
+                url: url, 
               ),
             ),
           ],

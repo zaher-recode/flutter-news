@@ -46,18 +46,20 @@ class _SearchState extends State<Search> {
                     onChanged: (value) {
                       input = value;
                     },
-                    
                     autocorrect: true,
                     style: kTextSubTitle,
                     decoration: kSearchDecoration,
-                    onSubmitted: (String str){
+                    onSubmitted: (String str) {
                       if (str != '') {
-                      Navigator.of(context).pushReplacementNamed(
-                        '/results',
-                        arguments: {
-                          'input': str,
-                        },
-                      );
+                        Navigator.of(context).pushReplacementNamed(
+                          '/results',
+                          arguments: {
+                            'arg': str.toUpperCase(),
+                            'text': 'Results',
+                            'url':
+                                '$kUrlAll$kQueryEquals%27$str%27&language=en&sortBy=publishedAt$kApiKey',
+                          },
+                        );
                       }
                     },
                   ),
@@ -69,7 +71,10 @@ class _SearchState extends State<Search> {
                     Navigator.of(context).pushReplacementNamed(
                       '/results',
                       arguments: {
-                        'input': input,
+                        'arg': input.toUpperCase(),
+                        'text': 'Results',
+                        'url':
+                            '$kUrlAll$kQueryEquals%27$input%27&language=en&sortBy=publishedAt$kApiKey',
                       },
                     );
                   }
