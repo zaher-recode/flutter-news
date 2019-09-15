@@ -1,14 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:realbox/src/article_model.dart';
 import 'package:realbox/utilities/constants.dart';
 import 'package:timeago/timeago.dart' as timeago;
+import 'package:url_launcher/url_launcher.dart';
 
 class Show extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ArticleModel article = ModalRoute.of(context).settings.arguments;
+    final replacedContent= article.content.replaceAll(RegExp(r'( [\+[\d]*. chars])'), '');
+    _readMore() async {
+      final url = article.url;
+      print(url);
+      if (await canLaunch(url)) {
+        await launch(url,);
+      } else {
+        throw 'Could not launch $url';
+      }
+    }
 
     return Scaffold(
+      // resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Column(
           children: <Widget>[
@@ -31,65 +44,92 @@ class Show extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(right: 18.0),
-                      child: Text(
+                      child: GestureDetector(
+                        onTap: (){
+                          if(article.sourceId == null){
+                            return;
+                          }else{
+                            Navigator.pushNamed(context, '/source',arguments: article.sourceId);
+                          }
+                          
+                          },
+                        child:  Text(
                         article.source,
                         style: kTextResults,
                       ),
+                      ),
                     ),
                   ],
                 ),
               ),
             ),
-//              SizedBox(height: 50.0,),
-
-            Card(
-                child: Column(
-              children: <Widget>[
-                Text(
-                  article.title,
-                  style: kTextTitle,
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Text(
-                        timeago.format(article.publishedAt),
-                        style: kTextBody,
-                      ),
-                      Text(
-                        'By: ${article.author}',
-                        style: kTextBody,
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            )),
             Expanded(
-              child: Card(
-                child: Column(
-                  children: <Widget>[
-                    Image.network(article.urlToImage),
-                    Text(
-                      article.content,
-                      style: kTextSubTitle,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
+              
+              child: Column(
+                children: <Widget>[
+                  Card(
+                    child: Column(
                       children: <Widget>[
-                        RaisedButton(
-                          onPressed: () {},
-                          child: Text('Read More'),
-                          color: kColorYellow,
+                        Text(
+                          article.title,
+                          style: kTextTitle,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Text(
+                                timeago.format(article.publishedAt),
+                                style: kTextItalic,
+                              ),
+                              Text(
+                                'By: ${article.author}',
+                                style: kTextItalic,
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
-                  ],
-                ),
+                  ),
+                  Expanded(
+                    child: Card(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: <Widget>[
+                           Image.network(
+                                article.urlToImage,
+                                height: 200.0,
+                                fit: BoxFit.cover,
+                              ),
+                               Expanded(
+                            child: Container(),
+                          ),
+                          Text(
+                            replacedContent,
+                            style: kTextBody,
+                          ),
+                          Expanded(
+                            child: Container(),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: <Widget>[
+                              RaisedButton(
+                                onPressed: _readMore,
+                                child: Text('Read More'),
+                                color: kColorYellow,
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ),
+            )
           ],
         ),
       ),

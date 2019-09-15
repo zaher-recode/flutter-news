@@ -60,6 +60,10 @@ const kTextResults = TextStyle(
   fontWeight: FontWeight.w700,
   fontSize: 25.0,
 );
+const kTextItalic = TextStyle(
+  fontStyle: FontStyle.italic,
+  color: kColorGrey
+);
 const kSearchDecoration = InputDecoration(
   border: OutlineInputBorder(
     borderSide: BorderSide.none,

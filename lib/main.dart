@@ -4,6 +4,7 @@ import 'package:realbox/screens/index.dart';
 import 'package:realbox/screens/show.dart';
 import 'package:realbox/screens/search.dart';
 import 'package:realbox/screens/results.dart';
+import 'package:realbox/screens/source.dart';
 // import 'package:realbox/screens/sections/tech.dart';
 // import 'package:realbox/screens/sections/business.dart';
 // import 'package:realbox/screens/sections/entertainment.dart';
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
         '/show': (context) => Show(),
         '/search': (context) => Search(),
         '/results': (context) => Results(),
+        '/source': (context) => Source(),
         // '/sections/tech': (context) => Tech(),
         // '/sections/business': (context) => Business(),
         // '/sections/entertainment': (context) => Entertainment(),

@@ -13,6 +13,7 @@ class _SearchState extends State<Search> {
   Widget build(BuildContext context) {
     String input;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -45,7 +46,7 @@ class _SearchState extends State<Search> {
                     onChanged: (value) {
                       input = value;
                     },
-                    autofocus: true,
+                    
                     autocorrect: true,
                     style: kTextSubTitle,
                     decoration: kSearchDecoration,

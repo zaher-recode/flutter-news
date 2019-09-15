@@ -19,6 +19,7 @@ class _NewsFeederState extends State<NewsFeeder> {
   String titleText;
   String newsUrl;
   bool _noResults = false;
+  bool _noSource = false;
   var _newsData;
   List<ArticleModel> articles = [];
   @override
@@ -47,8 +48,10 @@ class _NewsFeederState extends State<NewsFeeder> {
     Networker newsNetworker = Networker(newsUrl);
     _newsData = await newsNetworker.getData();
     _refresh(_newsData);
-    print(_newsData['totalResults']);
-    if(_newsData['totalResults'] == 0){
+    // print(_newsData['totalResults']);
+    if(_newsData == null){
+      _noSource = true;
+    }else if(_newsData['totalResults'] == 0){
       print('111111111111 it should work');
      _noResults = true;
       // return Center(child: Text('SORRY! No Results Were Found.',style: kTextTitle,),);
@@ -65,6 +68,9 @@ class _NewsFeederState extends State<NewsFeeder> {
   Widget build(BuildContext context) {
     if(_noResults){
       return Center(child: Text('SORRY! No Results Were Found.',style: kTextTitle,),);
+    }
+    if(_noSource){
+      return Center(child: Text('SORRY! Source Couldn\'t be Found.',style: kTextTitle,),);
 
     }
     return Column(
