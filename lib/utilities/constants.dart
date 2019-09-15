@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:realbox/src/location.dart';
 
 // colors
 const Color kColorDarkGrey = Color(0xFF555555);

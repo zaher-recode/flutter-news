@@ -20,7 +20,9 @@ class _LoadingScreenState extends State<LoadingScreen> {
     // get country from gps location
     Location location = Location();
     await location.getContry();
-    
+    ////////
+    // this loading was supposed to get news and show it later but changed the design.
+    ////////
     // String url = '$kUrlTop$kCountryEquals$country$kApiKey';
     // Networker newsNetworker = Networker(url);
     // var newsData = await newsNetworker.getData();

@@ -33,7 +33,6 @@ class Results extends StatelessWidget {
                 ],
               ),
             ),
-//              SizedBox(height: 50.0,),
 
             Expanded(
               child: NewsFeeder(

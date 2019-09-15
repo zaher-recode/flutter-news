@@ -2,20 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:realbox/utilities/constants.dart';
 import 'package:realbox/src/location.dart';
 import 'package:realbox/screens/news_feeder.dart';
-
-
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Index extends StatelessWidget {
-  // changing to NamedRoutes
-  // final data;
-  // Index(this.data);
-
   @override
   Widget build(BuildContext context) {
-    // final Map<String, dynamic> data = ModalRoute.of(context).settings.arguments;
-        // print(routeArgs);
-    // final data = routeArgs['data'];
+    
     return DefaultTabController(
       length: 8,
       child: Scaffold(

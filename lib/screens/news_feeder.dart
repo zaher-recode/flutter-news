@@ -44,17 +44,13 @@ class _NewsFeederState extends State<NewsFeeder> {
   }
 
   Future<void> _getNews() async {
-    //String url = '$kUrlTop$kCountryEquals${Location.country}&category=technology$kApiKey';
     Networker newsNetworker = Networker(newsUrl);
     _newsData = await newsNetworker.getData();
     _refresh(_newsData);
-    // print(_newsData['totalResults']);
     if(_newsData == null){
       _noSource = true;
     }else if(_newsData['totalResults'] == 0){
-      print('111111111111 it should work');
      _noResults = true;
-      // return Center(child: Text('SORRY! No Results Were Found.',style: kTextTitle,),);
       
     }else{
       for (int i = 0; i < (_newsData['articles']).length; i++) {
