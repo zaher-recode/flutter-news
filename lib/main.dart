@@ -5,7 +5,6 @@ import 'package:realbox/screens/show.dart';
 import 'package:realbox/screens/search.dart';
 import 'package:realbox/screens/results.dart';
 
-
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -19,8 +18,6 @@ class MyApp extends StatelessWidget {
         '/show': (context) => Show(),
         '/search': (context) => Search(),
         '/results': (context) => Results(),
-
-
       },
     );
   }

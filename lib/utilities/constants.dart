@@ -7,7 +7,7 @@ const Color kColorLightGrey = Color(0xFFD6D6D6);
 const Color kColorOffWhite = Color(0XFFF7F7F7);
 const Color kColorYellow = Color(0xFFEFCB56);
 //API NEWS
-const String kApiKey ='&apiKey=0793fd58c3384ef19ee95aada34b1ae0'; 
+const String kApiKey = '&apiKey=0793fd58c3384ef19ee95aada34b1ae0';
 const String kCountryEquals = 'country=';
 const String kSourceEquals = 'source=';
 const String kQueryEquals = 'q=';
@@ -59,10 +59,7 @@ const kTextResults = TextStyle(
   fontWeight: FontWeight.w700,
   fontSize: 25.0,
 );
-const kTextItalic = TextStyle(
-  fontStyle: FontStyle.italic,
-  color: kColorGrey
-);
+const kTextItalic = TextStyle(fontStyle: FontStyle.italic, color: kColorGrey);
 const kSearchDecoration = InputDecoration(
   border: OutlineInputBorder(
     borderSide: BorderSide.none,

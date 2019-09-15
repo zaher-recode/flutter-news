@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:realbox/utilities/constants.dart';
 import 'package:realbox/src/location.dart';
-import 'package:realbox/src/networker.dart';
 
 class LoadingScreen extends StatefulWidget {
   @override

@@ -7,7 +7,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class Index extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    
     return DefaultTabController(
       length: 8,
       child: Scaffold(
@@ -20,7 +19,9 @@ class Index extends StatelessWidget {
           leading: Image.asset('images/logo.png'),
           actions: <Widget>[
             FlatButton(
-              onPressed: (){Navigator.pushNamed(context, '/search');},
+              onPressed: () {
+                Navigator.pushNamed(context, '/search');
+              },
               child: Icon(
                 FontAwesomeIcons.search,
                 color: kColorGrey,
@@ -41,9 +42,9 @@ class Index extends StatelessWidget {
               Tab(icon: Icon(FontAwesomeIcons.futbol), text: 'Sports'),
               Tab(icon: Icon(FontAwesomeIcons.film), text: 'Entertainment'),
               Tab(icon: Icon(FontAwesomeIcons.atom), text: 'Science'),
-              Tab(icon: Icon(FontAwesomeIcons.globeEurope), text: 'Nouvelles Françaises'),
-              
-
+              Tab(
+                  icon: Icon(FontAwesomeIcons.globeEurope),
+                  text: 'Nouvelles Françaises'),
             ],
           ),
         ),
@@ -53,11 +54,12 @@ class Index extends StatelessWidget {
               ListTile(
                 leading: Icon(FontAwesomeIcons.globeEurope),
                 title: Text('French'),
-                onTap: (){ 
-                  NewsFeeder(text: 'News in French', url: '$kUrlTop${kCountryEquals}fr$kApiKey');
+                onTap: () {
+                  NewsFeeder(
+                      text: 'News in French',
+                      url: '$kUrlTop${kCountryEquals}fr$kApiKey');
                   Navigator.pop(context);
-                  },
- 
+                },
               )
             ],
           ),
@@ -65,14 +67,36 @@ class Index extends StatelessWidget {
         body: SafeArea(
           child: TabBarView(
             children: [
-              NewsFeeder(text: 'Local News in ${Location.countryName}', url: '$kUrlTop$kCountryEquals${Location.country}$kApiKey'),
-              NewsFeeder(text: 'Health News', url:'$kUrlTop$kCountryEquals${Location.country}&category=health$kApiKey'),
-              NewsFeeder(text: 'Technlogy News', url:'$kUrlTop$kCountryEquals${Location.country}&category=technology$kApiKey'),
-              NewsFeeder(text: 'Business News',url: '$kUrlTop$kCountryEquals${Location.country}&category=business$kApiKey'),
-              NewsFeeder(text: 'Sports News',url:'$kUrlTop$kCountryEquals${Location.country}&category=sports$kApiKey'),
-              NewsFeeder(text: 'Entertainment News',url:'$kUrlTop$kCountryEquals${Location.country}&category=entertainment$kApiKey'),
-              NewsFeeder(text: 'Science News',url:'$kUrlTop$kCountryEquals${Location.country}&category=science$kApiKey'),
-              NewsFeeder(text: 'Nouvelles Françaises',url: '$kUrlTop${kCountryEquals}fr$kApiKey'),
+              NewsFeeder(
+                  text: 'Local News in ${Location.countryName}',
+                  url: '$kUrlTop$kCountryEquals${Location.country}$kApiKey'),
+              NewsFeeder(
+                  text: 'Health News',
+                  url:
+                      '$kUrlTop$kCountryEquals${Location.country}&category=health$kApiKey'),
+              NewsFeeder(
+                  text: 'Technlogy News',
+                  url:
+                      '$kUrlTop$kCountryEquals${Location.country}&category=technology$kApiKey'),
+              NewsFeeder(
+                  text: 'Business News',
+                  url:
+                      '$kUrlTop$kCountryEquals${Location.country}&category=business$kApiKey'),
+              NewsFeeder(
+                  text: 'Sports News',
+                  url:
+                      '$kUrlTop$kCountryEquals${Location.country}&category=sports$kApiKey'),
+              NewsFeeder(
+                  text: 'Entertainment News',
+                  url:
+                      '$kUrlTop$kCountryEquals${Location.country}&category=entertainment$kApiKey'),
+              NewsFeeder(
+                  text: 'Science News',
+                  url:
+                      '$kUrlTop$kCountryEquals${Location.country}&category=science$kApiKey'),
+              NewsFeeder(
+                  text: 'Nouvelles Françaises',
+                  url: '$kUrlTop${kCountryEquals}fr$kApiKey'),
             ],
           ),
         ),

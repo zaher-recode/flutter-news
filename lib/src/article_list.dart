@@ -12,7 +12,8 @@ class AtricleList extends StatelessWidget {
         itemCount: articles.length,
         itemBuilder: (context, int index) {
           return GestureDetector(
-            onTap: ()=>Navigator.pushNamed(context, '/show',arguments: articles[index]),
+            onTap: () => Navigator.pushNamed(context, '/show',
+                arguments: articles[index]),
             child: Container(
                 margin: const EdgeInsets.fromLTRB(21.0, 31.0, 26.0, 0.0),
                 decoration: BoxDecoration(

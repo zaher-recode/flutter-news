@@ -9,12 +9,15 @@ class Show extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ArticleModel article = ModalRoute.of(context).settings.arguments;
-    final replacedContent= article.content.replaceAll(RegExp(r'( [\+[\d]*. chars])'), '');
+    final replacedContent =
+        article.content.replaceAll(RegExp(r'( [\+[\d]*. chars])'), '');
     _readMore() async {
       final url = article.url;
       print(url);
       if (await canLaunch(url)) {
-        await launch(url,);
+        await launch(
+          url,
+        );
       } else {
         throw 'Could not launch $url';
       }
@@ -45,10 +48,10 @@ class Show extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(right: 18.0),
                       child: GestureDetector(
-                        onTap: (){
-                          if(article.sourceId == null){
+                        onTap: () {
+                          if (article.sourceId == null) {
                             return;
-                          }else{
+                          } else {
                             Navigator.of(context).pushReplacementNamed(
                               '/results',
                               arguments: {
@@ -59,12 +62,11 @@ class Show extends StatelessWidget {
                               },
                             );
                           }
-                          
-                          },
-                        child:  Text(
-                        article.source,
-                        style: kTextResults,
-                      ),
+                        },
+                        child: Text(
+                          article.source,
+                          style: kTextResults,
+                        ),
                       ),
                     ),
                   ],
@@ -72,7 +74,6 @@ class Show extends StatelessWidget {
               ),
             ),
             Expanded(
-              
               child: Column(
                 children: <Widget>[
                   Card(
@@ -106,12 +107,12 @@ class Show extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: <Widget>[
-                           Image.network(
-                                article.urlToImage,
-                                height: 200.0,
-                                fit: BoxFit.cover,
-                              ),
-                               Expanded(
+                          Image.network(
+                            article.urlToImage,
+                            height: 200.0,
+                            fit: BoxFit.cover,
+                          ),
+                          Expanded(
                             child: Container(),
                           ),
                           Text(
