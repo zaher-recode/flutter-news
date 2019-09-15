@@ -17,7 +17,7 @@ class Index extends StatelessWidget {
         // print(routeArgs);
     // final data = routeArgs['data'];
     return DefaultTabController(
-      length: 7,
+      length: 8,
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,
@@ -49,6 +49,24 @@ class Index extends StatelessWidget {
               Tab(icon: Icon(FontAwesomeIcons.futbol), text: 'Sports'),
               Tab(icon: Icon(FontAwesomeIcons.film), text: 'Entertainment'),
               Tab(icon: Icon(FontAwesomeIcons.atom), text: 'Science'),
+              Tab(icon: Icon(FontAwesomeIcons.globeEurope), text: 'Nouvelles Françaises'),
+              
+
+            ],
+          ),
+        ),
+        drawer: Drawer(
+          child: ListView(
+            children: <Widget>[
+              ListTile(
+                leading: Icon(FontAwesomeIcons.globeEurope),
+                title: Text('French'),
+                onTap: (){ 
+                  NewsFeeder(text: 'News in French', url: '$kUrlTop${kCountryEquals}fr$kApiKey');
+                  Navigator.pop(context);
+                  },
+ 
+              )
             ],
           ),
         ),
@@ -62,6 +80,7 @@ class Index extends StatelessWidget {
               NewsFeeder(text: 'Sports News',url:'$kUrlTop$kCountryEquals${Location.country}&category=sports$kApiKey'),
               NewsFeeder(text: 'Entertainment News',url:'$kUrlTop$kCountryEquals${Location.country}&category=entertainment$kApiKey'),
               NewsFeeder(text: 'Science News',url:'$kUrlTop$kCountryEquals${Location.country}&category=science$kApiKey'),
+              NewsFeeder(text: 'Nouvelles Françaises',url: '$kUrlTop${kCountryEquals}fr$kApiKey'),
             ],
           ),
         ),

@@ -3,26 +3,22 @@ Recode News:
 this is a project for Recode built using Flutter. 
 it should fetch news from api and get it displayed in different sections.
 
-# Chaneg log:
 
-first commit :  
--this has the app with getting json from API and decoding it.
-        not displaying anything from it so far.
--got the splash screen at starting the app.
-- start at loading screen
-- got the loading screen to get the location and use api.geonames.org to get the country
-- also send the request to get the data for articles for TOP Local from newsapi.org.
-- then getting that articles and the country (to avoid requesting country again) sent to index page as a Map.
-- in index made the TabBar with 7 sections pointing to 7 pages. and search icon.
--started with the search.
+# Main Features:
+- Fetch News from newsapi.org and display them in a similar design to the one given.
+- app gets current location during loading screen, and use geonames.org API to ger current country. and use it to get related news.
+- Exploring news with respect to categories.
+- news in French :) ( Chinese and Arabic was in plan but as the api returns null/no actual content it was useless to show ).
+- Search News.
+- tap on source name in any news to show the news available (  `this is dependant on the API having ID for that source`)
+- Error handling:
+  - if no location accessed ( US news by default).
+  - if no search word was entered.
+  - if no results were found.
+  - all nulls from the api in response.
+-  added Read More button to read the rest of news on it's source website as API only gives 256 characters in contents for developers.
+- removed the `+[xxx chars]` using regexp.
+- show the time since the news was published.
+- built to be modular and dry.
+- Added SplashScreen and Icon.
 
-Next :
-show the (index view) probably as listView using an Article Model.
-Make the list scrollable 
-finish the search connection.
-impliment slide to refresh
-load the images after creating them.(similar to https://dev.to/fallenstedt/building-widgets-on-demand-with-flutter-48dd)
-
-
-(show view) Push to show single news and pop it.
-add back button to search and (show view).
